@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+/* Aplica a todo el scroll vertical */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #e0f2f1; /* color del fondo del track */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #10b981; /* color del "pulgón" */
+    border-radius: 99deg;
+    border: 2px solid #e0f2f1;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #059669;
+  }
+
