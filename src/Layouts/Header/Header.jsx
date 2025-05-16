@@ -1,10 +1,8 @@
+import { FaHome, FaUserPlus, FaUser, FaLock, FaSignInAlt, FaTools } from "react-icons/fa";
 import logo from '../../assets/img/icons/logo.png';
-import './Header.css';
 import camion from '../../assets/img/icons/ezgif-367675f0653ab4.gif';
 import { ItemNavBar } from '../../UI/ItemNavBar/ItemNavBar';
-import main from '../../assets/img/icons/casa.png';
-import Registrarme from '../../assets/img/icons/registrarme.png';
-import { BiLogIn } from "react-icons/bi";
+import './Header.css';
 
 export function Header() {
   return (
@@ -23,23 +21,14 @@ export function Header() {
 
         {/* Botones de navegación con íconos */}
         <div className="flex justify-end gap-4 pr-4">
-          <ItemNavBar route='/'>
-          </ItemNavBar>
-          <ItemNavBar route='/Register'>       
-          </ItemNavBar>
-          <ItemNavBar route='/Usuario'>    
-          </ItemNavBar>
-          <ItemNavBar route='/ContraR'> 
-          </ItemNavBar>
-          <ItemNavBar route='/InicioS'>
-          </ItemNavBar>
-          <ItemNavBar route='/panelAdmin'>
-          </ItemNavBar>
+          <ItemNavBar route='/' icon={FaHome} label="Inicio" />
+          <ItemNavBar route='/Register' icon={FaUserPlus} label="Registro" />
+          <ItemNavBar route='/Usuario' icon={FaUser} label="Usuario" />
+          <ItemNavBar route='/ContraR' icon={FaLock} label="Contraseña" />
+          <ItemNavBar route='/InicioS' icon={FaSignInAlt} label="Login" />
+          <ItemNavBar route='/panelAdmin' icon={FaTools} label="Admin" />
         </div>
       </div>
-
-      {/* Navegación textual (opcional, se puede ocultar en móvil) */}
-     
     </>
   );
 }
