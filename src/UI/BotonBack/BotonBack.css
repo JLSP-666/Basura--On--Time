@@ -65,35 +65,7 @@
   box-shadow: 2px 2px 0px #000000;
 }
 
-.openai-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-}
 
-.openai-logo {
-  align-items: center;
-  justify-content: center;
-  background-color: #0f1715; /* OpenAI's green color */
-  border-radius: 50%; /* This creates the circular background */
-}
-
-.openai-icon {
-  width: 54px;
-  height: 54px;
-  fill: #ffffff; /* White color for the SVG */
-  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
 
 @keyframes spin {
   0% {
@@ -106,8 +78,7 @@
 
 .brutalist-button:hover .openai-logo {
   animation: spin 5s linear infinite;
-  width: 50px;
-  height: 50px;
+ 
   top: 28%;
 }
 

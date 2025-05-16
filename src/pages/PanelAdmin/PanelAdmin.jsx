@@ -5,12 +5,15 @@ import { IoDocumentText } from "react-icons/io5";
 import { RiTruckFill } from "react-icons/ri";
 import { ItemNavBar } from '../../UI/ItemNavBar/ItemNavBar';
 
+
 import "./PanelAdmin.css"
 
 const PanelAdmin = () => {
     return (
         <>
+        
             <section className='sectFirst'>
+                
                 <div className='min-h-max flex flex-col justify-center items-center w-180 h-screen bg-[var(--Voscuro2)] position fixed left-0'>
                     <img className='ImgLogo' src={logoBasuraOnTime} alt="" />
                     <p className='FontCursive text-5xl text-center text-white'>BASURA ON TIME</p>

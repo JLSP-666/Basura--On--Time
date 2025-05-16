@@ -24,48 +24,16 @@ export function Header() {
         {/* Botones de navegación con íconos */}
         <div className="flex justify-end gap-4 pr-4">
           <ItemNavBar route='/'>
-            <button className="shadow-2xl border bg-white w-14 h-14 flex items-center justify-center rounded-full">
-              <div className="w-10 h-10 border-2 rounded-full flex justify-center items-center bg-white">
-                <img src={main} alt="Inicio" className="w-6 h-6" />
-              </div>
-            </button>
           </ItemNavBar>
-
-          <ItemNavBar route='/Register'>
-            <button className="shadow-2xl border bg-white w-14 h-14 flex items-center justify-center rounded-full">
-              <div className="w-10 h-10 border-2 rounded-full flex justify-center items-center bg-white">
-                <img src={Registrarme} alt="Registrarme" className="w-6 h-6" />
-              </div>
-            </button>
+          <ItemNavBar route='/Register'>       
           </ItemNavBar>
-
-          <ItemNavBar route='/Usuario'>
-            <button className="shadow-2xl border bg-white w-14 h-14 flex items-center justify-center rounded-full">
-              <div className="w-10 h-10 border-2 rounded-full flex justify-center items-center bg-white">
-                <BiLogIn className="w-6 h-6" />
-              </div>
-            </button>
+          <ItemNavBar route='/Usuario'>    
           </ItemNavBar>
-          <ItemNavBar route='/ContraR'>
-            <button className="shadow-2xl border bg-white w-14 h-14 flex items-center justify-center rounded-full">
-              <div className="w-10 h-10 border-2 rounded-full flex justify-center items-center bg-white">
-                <BiLogIn className="w-6 h-6" />
-              </div>
-            </button>
+          <ItemNavBar route='/ContraR'> 
           </ItemNavBar>
           <ItemNavBar route='/InicioS'>
-            <button className="shadow-2xl border bg-white w-14 h-14 flex items-center justify-center rounded-full">
-              <div className="w-10 h-10 border-2 rounded-full flex justify-center items-center bg-white">
-                <BiLogIn className="w-6 h-6" />
-              </div>
-            </button>
           </ItemNavBar>
           <ItemNavBar route='/panelAdmin'>
-            <button className="shadow-2xl border bg-white w-14 h-14 flex items-center justify-center rounded-full">
-              <div className="w-10 h-10 border-2 rounded-full flex justify-center items-center bg-white">
-                <BiLogIn className="w-6 h-6" />
-              </div>
-            </button>
           </ItemNavBar>
         </div>
       </div>

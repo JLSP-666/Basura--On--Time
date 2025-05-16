@@ -1,10 +1,14 @@
 import React from 'react'
 import logoBasuraOnTime from '../../assets/img/icons/logoBasuraOnTime.png'
 import "./Register.css"
+import { ItemNavBar } from '../../UI/BotonBack/BotonBack';
 
 const Register = () => {
   return (
     <>
+     <div className="absolute top-4 left-4 z-50">
+            <ItemNavBar route="/" content="<--" />
+          </div>
     <section className='sectFirst glass p-[50px] place-items-center '>
       <div className='flex flex-col justify-center items-center '> 
         <img className='img_logo' src={logoBasuraOnTime} alt="" />
