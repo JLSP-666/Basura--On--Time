@@ -1,18 +1,44 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 import { ItemNavBar } from '../../UI/BotonBack/BotonBack';
 import { Pencil, Trash2, MapPin, Mail, User, Phone, Lock } from 'lucide-react';
 
 const UserProfileApp = () => {
+  const URL = 'http://localhost:10101/profile'
+  const token = localStorage.getItem('token');
   const [direccion, setDireccion] = useState('Calle Falsa 123, Ciudad');
   const [showModal, setShowModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
 
-  const [email, setEmail] = useState('usuario@ejemplo.com');
-  const [nombre, setNombre] = useState('Juan Carlos');
-  const [apellido, setApellido] = useState('Pérez Gómez');
-  const [Telefono, setTelefono] = useState('123123123');
+  const [email, setEmail] = useState('');
+  const [nombre, setNombre] = useState('');
+  const [apellido, setApellido] = useState('');
+  const [Telefono, setTelefono] = useState('');
 
   const [passwordConfirm, setPasswordConfirm] = useState('');
+
+  useEffect(() => {
+     //Aquí podrías hacer una llamada a la API para obtener los datos del usuario
+     if (token) {
+       axios.get(URL,{
+           headers: {
+              'Authorization' : `Bearer ${token}`
+           }
+       })
+        .then(response => {
+         const { email, nombre, apellido, telefono, direccion } = response.data;
+         console.log(response.data);
+         setEmail(email);
+         setNombre(nombre);
+         setApellido(apellido);
+         setTelefono(telefono);
+         setDireccion(direccion);
+          })
+        .catch(error => console.error('Error al obtener los datos del usuario:', error));
+     } else{
+      alert('No se pudo obtener la información del usuario. Por favor, inicia sesión.');
+     }
+  })
 
   const handleEliminarCuenta = () => {
     if (passwordConfirm.trim() === '') {

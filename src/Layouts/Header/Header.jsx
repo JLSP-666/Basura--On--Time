@@ -1,35 +1,60 @@
-import { FaHome, FaUserPlus, FaUser, FaLock, FaSignInAlt, FaTools } from "react-icons/fa";
+import {
+  FaHome,
+  FaUserPlus,
+  FaUser,
+  FaSignInAlt,
+  FaTools,
+  FaSignOutAlt
+} from "react-icons/fa";
 import logo from '../../assets/img/icons/logo.png';
-import camion from '../../assets/img/icons/ezgif-367675f0653ab4.gif';
 import { ItemNavBar } from '../../UI/ItemNavBar/ItemNavBar';
 import './Header.css';
+import { useNavigate } from 'react-router-dom';
+
 
 export function Header() {
+  const navigate = useNavigate();
+  const isLoggedIn = !!localStorage.getItem('token');
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    navigate('/InicioS'); // o la ruta que quieras para login
+  };
+
   return (
-    <>
-      <div className="sticky top-0 bg-white h-30 grid grid-cols-3 items-center border-b-2 shadow-md z-50">
-        
-        {/* Logo */}
-        <div className="logo border-2 bg-white h-20 w-24 m-4 rounded-full shadow-md flex justify-center items-center">
-          <img src={logo} alt="logo" className="w-auto" />
-        </div>
+    <header className="sticky top-0 bg-(v) h-25 px-8 shadow z-50 flex items-center justify-between">
 
-        {/* Camión decorativo */}
-        <div className="flex justify-center">
-          <img src={camion} alt="gif divertido" className="h-16" />
+      {/* Logo a la izquierda */}
+      <div className="flex items-center gap-2">
+        <div className="h-14 w-14 rounded-full bg-white border shadow flex justify-center items-center">
+          <img src={logo} alt="logo" className="h-15 w-auto" />
         </div>
-
-        {/* Botones de navegación con íconos */}
-        <div className="flex justify-end gap-4 pr-4">
-          <ItemNavBar route='/' icon={FaHome} label="Inicio" />
-          <ItemNavBar route='/Register' icon={FaUserPlus} label="Registro" />
-          <ItemNavBar route='/Usuario' icon={FaUser} label="Usuario" />
-          <ItemNavBar route='/ContraR' icon={FaLock} label="Contraseña" />
-          <ItemNavBar route='/InicioS' icon={FaSignInAlt} label="Login" />
-          <ItemNavBar route='/panelAdmin' icon={FaTools} label="Admin" />
-        </div>
+        <span className="text-xl font-bold text-green-800 hidden sm:inline">Basura on Time</span>
       </div>
-    </>
+
+      {/* Navegación a la derecha */}
+      <nav className="flex items-center gap-3 overflow-x-auto scrollbar-hide">
+        {isLoggedIn ? (
+          <>
+            <ItemNavBar route='/home' icon={FaHome} label="Inicio" />
+            <ItemNavBar route='/perfil' icon={FaUser} label="Perfil" />
+            <ItemNavBar route='/herramientas' icon={FaTools} label="Herramientas" />
+            <button
+              onClick={handleLogout}
+              className="flex items-center gap-2 px-3 py-2 text-red-600 hover:text-red-800 transition"
+            >
+              <FaSignOutAlt />
+              <span className="hidden sm:inline">Cerrar sesión</span>
+            </button>
+          </>
+        ) : (
+          <>
+            <ItemNavBar route='/Register' icon={FaUserPlus} label="Registro" />
+            <ItemNavBar route='/InicioS' icon={FaSignInAlt} label="Inicio de Sesion" />
+          </>
+        )}
+      </nav>
+    </header>
   );
 }
 
