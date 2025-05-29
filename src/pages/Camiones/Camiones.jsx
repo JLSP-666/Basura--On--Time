@@ -18,7 +18,6 @@ const Camiones = () => {
         cancelButtonText: 'Cancelar',
         confirmButtonColor: '#d33',
         cancelButtonColor: '#3085d6',
-        cancelButtonColor: '#0A372D',
         allowEscapeKey: false,
         allowOutsideClick: false,
     }).then((result) => {
