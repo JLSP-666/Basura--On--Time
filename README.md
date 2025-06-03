@@ -22,3 +22,5 @@ npm install react-router-dom
 npm install tailwindcss @tailwindcss/vite
 npm install gsap
 npm install axios
+
+npm i sweetalert2 react-icons framer-motion @fortawesome/react-fontawesome @fortawesome/free-solid-svg-icons @fortawesome/fontawesome-svg-core swiper react-router-dom tailwindcss @tailwindcss/vite gsap axios
