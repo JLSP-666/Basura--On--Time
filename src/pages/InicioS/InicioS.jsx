@@ -2,7 +2,7 @@ import Logo from '../../UI/logo/Logo';
 import DividerB from '../../UI/dividerB/DividerB';
 import PageWrapper from '../../UI/sas/sas';
 import axios from 'axios';
-import { ItemNavBar } from '../../UI/BotonBack/BotonBack';
+//import { ItemNavBar } from '../../UI/BotonBack/BotonBack';
 import React, { useState } from 'react';
 import {useNavigate} from 'react-router-dom';
 import '../InicioS/InicioS.css';

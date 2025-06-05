@@ -22,7 +22,7 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 bg-(v) h-25 px-8 shadow z-50 flex items-center justify-between">
+    <header className="sticky top-0  bg-white h-25 px-8 shadow z-50 flex items-center justify-between">
 
       {/* Logo a la izquierda */}
       <div className="flex items-center gap-2">
@@ -34,25 +34,8 @@ export function Header() {
 
       {/* Navegación a la derecha */}
       <nav className="flex items-center gap-3 overflow-x-auto scrollbar-hide">
-        {isLoggedIn ? (
-          <>
-            <ItemNavBar route='/home' icon={FaHome} label="Inicio" />
-            <ItemNavBar route='/perfil' icon={FaUser} label="Perfil" />
-            <ItemNavBar route='/herramientas' icon={FaTools} label="Herramientas" />
-            <button
-              onClick={handleLogout}
-              className="flex items-center gap-2 px-3 py-2 text-red-600 hover:text-red-800 transition"
-            >
-              <FaSignOutAlt />
-              <span className="hidden sm:inline">Cerrar sesión</span>
-            </button>
-          </>
-        ) : (
-          <>
-            <ItemNavBar route='/Register' icon={FaUserPlus} label="Registro" />
-            <ItemNavBar route='/InicioS' icon={FaSignInAlt} label="Inicio de Sesion" />
-          </>
-        )}
+        <ItemNavBar route='/Register' icon={FaUserPlus} label="Registro" />
+        <ItemNavBar route='/Admin' icon={FaSignInAlt} label="Login" />
       </nav>
     </header>
   );
