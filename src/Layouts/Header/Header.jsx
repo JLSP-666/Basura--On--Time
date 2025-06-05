@@ -35,7 +35,7 @@ export function Header() {
       {/* Navegación a la derecha */}
       <nav className="flex items-center gap-3 overflow-x-auto scrollbar-hide">
         <ItemNavBar route='/Register' icon={FaUserPlus} label="Registro" />
-        <ItemNavBar route='/Admin' icon={FaSignInAlt} label="Login" />
+        <ItemNavBar route='/InicioS' icon={FaSignInAlt} label="Login" />
       </nav>
     </header>
   );
