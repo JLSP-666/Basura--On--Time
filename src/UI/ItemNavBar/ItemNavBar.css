@@ -1,32 +1,22 @@
-.itemNavLink {
-  display: flex;
-  align-items: center;
-  padding: 10px 15px;
-  text-decoration: none;
-  color: inherit;
-  width: 100%;
-  height: 100%;
+.navlink-button {
+  background: transparent;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  user-select: none;
+  text-decoration: none;
 }
 
-.itemNavLink:hover {
-  background-color: #f0f0f0;
+.navlink-button:hover {
+  /* Cambia el color del texto suavemente al hover */
+  color: #008D5D; /* verde lima que usas */
 }
 
-.buttonContent {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  width: 100%;
+.navlink-button.active {
+  /* Color del link activo */
+  color: #008D5D;
+  font-weight: 700;
 }
 
-.icon {
-  font-size: 1.2em;
-  /* o si usas SVG con tamaño fijo, ajustar aquí */
-}
-
-.label {
-  font-size: 1em;
-  font-weight: 500;
+.navlink-button svg {
+  /* Color del icono para que herede el texto */
+  fill: currentColor;
 }

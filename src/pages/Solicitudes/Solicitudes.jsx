@@ -3,12 +3,17 @@ import logoBasuraOnTime from '../../assets/img/icons/logoBasuraOnTime.png';
 import { FcOk } from "react-icons/fc";
 import { MdOutlineCancel } from "react-icons/md";
 import Swal from 'sweetalert2';
+import { BotonBack } from '../../UI/BotonBack/BotonBack';
+import './Solicitudes.css'; // Asegúrate de tener el CSS correspondiente
 
 const Solicitudes = () => {
   // Estado inicial de solicitudes (puedes traerlo de API o DB)
   const [solicitudes, setSolicitudes] = useState([
     { id: 1, tipo: 'Residuo especial', solicitante: 'Brayan Aguirre', fecha: '17/07/25', aceptada: false },
     { id: 2, tipo: 'Residuo especial', solicitante: 'David Muñoz', fecha: '15/09/25', aceptada: false },
+    { id: 3, tipo: 'Residuo especial', solicitante: 'Brayan Aguirre', fecha: '17/07/25', aceptada: false },
+    { id: 4, tipo: 'Residuo especial', solicitante: 'David Muñoz', fecha: '15/09/25', aceptada: false },
+    { id: 5, tipo: 'Residuo especial', solicitante: 'Brayan Aguirre', fecha: '17/07/25', aceptada: false },
   ]);
 
   const [searchTerm, setSearchTerm] = useState('');
@@ -75,10 +80,13 @@ const Solicitudes = () => {
   return (
     <section className='sectFirst'>
       <div className='min-h-max flex flex-col justify-center items-center w-180 h-screen bg-[var(--Voscuro2)] fixed left-0'>
+        <div className="absolute top-4 left-4 z-50">
+          <BotonBack route="/PanelAdmin" content=" " />
+        </div>
         <img className='ImgLogo' src={logoBasuraOnTime} alt="Logo Basura On Time" />
         <p className='FontCursive text-5xl text-center text-white'>BASURA ON TIME</p>
       </div >
-      <div className='DivCamion gap-10 FontGeologica bg-[var(--Voscuro2)]'>
+      <div className='DivCamionSolicitudes gap-10 FontGeologica bg-[var(--Voscuro2)]'>
         <h1 className='text-5xl text-white text-left'>Gestión de Solicitudes</h1>
         <div className='flex justify-start w-180'>
           <input
@@ -90,7 +98,7 @@ const Solicitudes = () => {
           />
         </div >
         <div className='text-white h-120 w-180'>
-          <div className='flex justify-center items-center text-center rounded-t-md h-25 gap-20 text-xl border-1 border-[var(--Vclaro3)] bg-[var(--Voscuro4)]'>
+          <div className='flex justify-center items-center text-center rounded-t-md h-15 gap-20 text-lg border-1 border-[var(--Vclaro3)] bg-[var(--Voscuro4)]'>
             <p>Id</p>
             <p>Tipo</p>
             <p>Solicitante</p>
@@ -103,13 +111,16 @@ const Solicitudes = () => {
           ) : filteredSolicitudes.map(({ id, tipo, solicitante, fecha, aceptada }) => (
             <div
               key={id}
-              className={`flex justify-center items-center text-center h-25 gap-10 border-1 border-[var(--Vclaro3)] text-xl
+              className={`flex justify-center items-center text-center h-15 gap-12 border-1 border-[var(--Vclaro3)] text-lg
                           ${aceptada ? 'bg-[var(--Vclaro)] bg-opacity-40' : ''}`}
             >
-              <p>{id.toString().padStart(2, '0')}</p>
-              <p>{tipo}</p>
-              <p>{solicitante}</p>
-              <p>{fecha}</p>
+              <div className="flex justify-center items-center gap-5 py-2">
+                <p className="w-10">{id.toString().padStart(2, '0')}</p>
+                <p className="w-32 break-words">{tipo}</p>
+                <p className="w-40 break-words">{solicitante}</p>
+                <p className="w-24">{fecha}</p>
+              </div>
+
               <div className='flex flex-initial gap-2 justify-center items-center'>
                 <button
                   disabled={aceptada}

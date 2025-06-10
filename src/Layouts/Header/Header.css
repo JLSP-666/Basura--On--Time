@@ -70,31 +70,6 @@
   }
 }
 
-.camion {
-  font-size: 4rem;
-  animation: moverCamion 50s ease-in-out infinite;
-  z-index: 0;
-}
-
-@keyframes moverCamion {
-  0% {
-    left: 1%;
-    transform: translateX(0px);
-  }
-  20% {
-    transform: translateX(40rem);
-  }
-  40% {
-    transform: translateX(50rem);
-  }
-  60% {
-    transform: translateX(70rem);
-  }
-  100% {
-    transform: translateX(1000rem);
-  }
-}
-
 #login {
   background-color: rgb(255, 255, 255);
   width: 120px;

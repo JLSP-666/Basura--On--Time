@@ -22,9 +22,6 @@
   gap: 2rem; /* espacio entre los elementos hijos */
 }
 
-
-
-
 .FontCursive {
     font-family: 'lobster', cursive;
     text-shadow: black 8px 8px 10px;
@@ -33,4 +30,16 @@
 .ImgLogo{
     max-width: 360px;
     min-width: 180px;
+}
+
+/* Para asegurar que no se desborde horizontalmente */
+.DivCamion {
+  overflow-x: hidden;
+}
+
+/* Opcional para que los textos largos no se estiren */
+p.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
