@@ -2,6 +2,7 @@ import React from 'react'
 import TextBox from '../../../UI/Text-Box/Text-Box'
 import Button2 from '../../../UI/Button2/Button2'
 import './Main.css'
+import logo from '../../../assets/img/icons/logo.png'
 
 const Main = () => {
   return (
@@ -9,11 +10,11 @@ const Main = () => {
       <main className="FontGeologica">
 
         {/* Hero Section - Verde oscuro 1 */}
-        <section className="bg-white text-white py-30 text-center px-6">
-          <h1 className="text-4xl font-bold mb-4 text-[var(--Voscuro2)]">Tu ciudad más limpia empieza contigo</h1>
-          <p className="text-lg mb-6 text-[var(--Voscuro2)]">Solicitá la recolección de residuos en tu zona con un solo clic.</p>
-          <Button2 />
+        <section className="bg-white text-white py-30 px-6 flex flex-col items-center justify-center text-center min-h-[50vh]">
+          <img src={logo} alt="logo" className="w-auto h-[280px]" />
+          <p className="FontCursive text-emerald-900 text-6xl">Basura On Time</p>
         </section>
+
 
         {/* Servicios - Verde oscuro 2 */}
         <section className="py-16 px-6 bg-[var(--Voscuro2)] text-white text-center">
@@ -45,27 +46,63 @@ const Main = () => {
         </section>
 
         {/* Impacto positivo - Verde oscuro 2 (Full width) */}
-        <section className="bg-[var(--Voscuro2)] py-20 px-6 text-center text-white">
-          <h2 className="text-4xl font-semibold mb-14">Impacto positivo</h2>
-          <div className="grid md:grid-cols-4 gap-10 max-w-[1200px] mx-auto">
+        <section className="bg-[var(--Voscuro2)] py-10 px-4 text-center text-white flex flex-col justify-center items-center">
+          <h2 className="text-2xl font-semibold mb-8">Impacto positivo</h2>
+          <div className="grid md:grid-cols-3 gap-6 max-w-[1000px] w-full">
             <div>
-              <h3 className="text-5xl font-extrabold mb-2">+10,000</h3>
-              <p>Usuarios registrados</p>
+              <h3 className="text-3xl font-extrabold mb-1">+10,000</h3>
+              <p className="text-sm">Usuarios registrados</p>
             </div>
             <div>
-              <h3 className="text-5xl font-extrabold mb-2">+50 Tn</h3>
-              <p>Residuos reciclados</p>
+              <h3 className="text-3xl font-extrabold mb-1">+120</h3>
+              <p className="text-sm">Camiones activos</p>
             </div>
             <div>
-              <h3 className="text-5xl font-extrabold mb-2">+120</h3>
-              <p>Camiones activos</p>
-            </div>
-            <div>
-              <h3 className="text-5xl font-extrabold mb-2">24/7</h3>
-              <p>Servicio disponible</p>
+              <h3 className="text-3xl font-extrabold mb-1">24/7</h3>
+              <p className="text-sm">Servicio disponible</p>
             </div>
           </div>
         </section>
+        <footer className="bg-white text-white h-2 py-10 px-4 text-center">
+          <div className="max-w-[1000px] mx-auto grid md:grid-cols-5 gap-8">
+            {/* Sección de enlaces */}
+            <div>
+              <h4 className="text-lg text-black font-semibold mb-3">Enlaces</h4>
+              <ul className="space-y-2 text-sm">
+                <li><a href="#" className="hover:underline">Inicio</a></li>
+                <li><a href="#" className="hover:underline">Servicios</a></li>
+                <li><a href="#" className="hover:underline">Contacto</a></li>
+                <li><a href="#" className="hover:underline">Acerca de</a></li>
+              </ul>
+            </div>
+
+            {/* Sección de redes sociales */}
+            <div>
+              <h4 className="text-lg text-black font-semibold mb-3">Síguenos</h4>
+              <div className="flex justify-center gap-4 text-xl">
+                <a href="#" aria-label="Facebook" className="hover:text-emerald-400">🌐</a>
+                <a href="#" aria-label="Twitter" className="hover:text-emerald-400">🐦</a>
+                <a href="#" aria-label="Instagram" className="hover:text-emerald-400">📸</a>
+              </div>
+            </div>
+
+            {/* Sección de contacto o dirección */}
+            <div>
+              <h4 className="text-lg text-black font-semibold mb-3">Contacto</h4>
+              <p className="text-sm">info@basuraontime.com</p>
+              <p className="text-sm">+123 456 7890</p>
+              <p className="text-sm">Ciudad Verde, Eco País</p>
+            </div>
+          </div>
+
+          {/* Línea final */}
+          <div className="mt-10 text-xs text-gray-400">
+            © {new Date().getFullYear()} Basura On Time. Todos los derechos reservados.
+          </div>
+        </footer>
+
+
+
 
       </main>
     </>

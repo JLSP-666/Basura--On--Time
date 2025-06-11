@@ -108,7 +108,7 @@ const Register = () => {
             <BotonBack route="/" content=" " />
           </div>
           <img className='img_logo' src={logoBasuraOnTime} alt="" />
-          <p id='FontCursive' className='text-6xl text-center text-white'>BASURA ON TIME</p>
+          <p id='FontCursive' className='text-6xl text-center text-white'>Basura On Time</p>
         </div>
         <div className='FontGeologica flex flex-col justify-center items-center gap-3.5 bg-[var(--Voscuro2)] w-120 h-150 rounded-4xl '>
           <p id='FontCursive' className='text-5xl p-10 text-white'>Registro</p>

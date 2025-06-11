@@ -15,14 +15,14 @@ export function Header() {
 
   return (
     <header>
-      <div className="sticky top-0 bg-[var(--Voscuro2)] h-40 grid grid-cols-2 items-center z-50 FontGeologica text-white shadow-lg">
+      <div className="sticky top-0 bg-[var(--Voscuro2)] h-40 grid grid-cols-2 items-center z-50 FontGeologica text-white shadow-xl">
         {/* Logo con texto y frase inspiradora */}
         <div className="flex items-center gap-4 m-8">
           <div className="w-27 aspect-square bg-white rounded-full shadow-md flex justify-center items-center border-2">
             <img src={logo} alt="logo" className="w-auto h-22" />
           </div>
           <div className="text-white">
-            <p className="FontCursive text-3xl">Basura On Time</p>
+            <p className="FontCursive text-6xl">Basura On Time</p>
             <p className="text-sm text-gray-200 italic">Por un futuro más limpio, empezamos hoy.</p>
           </div>
         </div>
