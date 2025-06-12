@@ -38,7 +38,7 @@ export function Header() {
           ) : (
             <>
               <ItemNavBar route='/dashboard' icon={FaHome} label="Inicio" />
-              <ItemNavBar route='/PanelDusuario' icon={FaUser} label="Mi panel" />
+              <ItemNavBar route='/perfil' icon={FaUser} label="Mi cuenta" />
               <ItemNavBar route='/herramientas' icon={FaTools} label="Herramientas" />
               <button
                 onClick={handleLogout}
@@ -51,7 +51,6 @@ export function Header() {
           )}
         </div>
       </div>
-      
     </header>
   );
 }

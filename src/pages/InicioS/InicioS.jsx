@@ -54,16 +54,16 @@ const XLanding = () => {
         <p id='FontCursive' className='text-5xl text-white mb-6'>Iniciar sesión</p>
 
         <input
-          className='rounded-md bg-[var(--Vclaro2)] w-110 h-14 text-center placeholder:text-center text-white mb-3'
+          className='rounded-md bg-[var(--Vclaro2)] w-100 h-10 text-center placeholder:text-center text-white mb-3'
           type="text"
           placeholder='Correo electrónico'
           value={email}
           onChange={(e) => setCorreo(e.target.value)}
         />
 
-        <div className="relative w-110 mb-3">
+        <div className="relative w-100 mb-3">
           <input
-            className='rounded-md bg-[var(--Vclaro2)] w-110 h-14 text-white placeholder:text-center text-center'
+            className='rounded-md bg-[var(--Vclaro2)] w-100 h-10 text-white placeholder:text-center text-center'
             type={showPassword ? "text" : "password"}
             placeholder='Contraseña'
             value={password}
@@ -84,14 +84,14 @@ const XLanding = () => {
         </div>
 
         <button
-          className='rounded-md w-110 h-14 bg-[var(--Vclaro)] text-white group cursor-pointer transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:bg-opacity-90 active:scale-95 mb-3'
+          className='rounded-md w-100 h-10 bg-[var(--Vclaro)] text-white group cursor-pointer transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:bg-opacity-90 active:scale-95 mb-3'
           onClick={handleLoginSubmit}
         >
           Iniciar sesión
         </button>
 
         <button
-          className='rounded-md w-110 h-14 bg-[var(--Voscuro3)] text-white group cursor-pointer transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:bg-opacity-90 active:scale-95 mb-4'
+          className='rounded-md w-100 h-10 bg-[var(--Voscuro3)] text-white group cursor-pointer transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:bg-opacity-90 active:scale-95 mb-4'
           onClick={() => navigate('/register')}
         >
           Crear cuenta
