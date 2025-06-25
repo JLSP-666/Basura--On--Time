@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { UserCircle, LogOut, Home, Truck, MapPin } from "lucide-react";
+import { FaSignOutAlt } from "react-icons/fa"; // <-- Agregado
 import PanelEstadoCamionesU from "../EstadoCamioneU/EstadoCamionesU";
 import ConsultaRutasU from "../ConsultarRU/ConsultarRU";
 import Usuario from "../Usuario/Usuario";
 import Solicitud from "../SolicitudesE/SolicitudesE";
 
 export default function UserDashboard() {
-  // más datos para probar de Jorge Salvaje
   const [user] = useState({ name: "David", email: "david@puto.com" });
   const [vista, setVista] = useState("inicio");
+
+ 
 
   const renderVista = () => {
     switch (vista) {
@@ -77,13 +79,7 @@ export default function UserDashboard() {
             onClick={() => setVista("solicitud")}
           />
         </nav>
-        <div className="p-4 border-t border-[#003830]">
-          <NavItem
-            icon={<LogOut size={22} />}
-            label="Cerrar sesión"
-            onClick={() => alert("Sesión cerrada")}
-          />
-        </div>
+       
       </aside>
 
       {/* Main Content */}

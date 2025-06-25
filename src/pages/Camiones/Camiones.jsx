@@ -16,8 +16,7 @@ const Camiones = () => {
     const URLEdit = 'https://express-latest-6gmf.onrender.com/modifyTruck';
 
     const [modoEdicion, setModoEdicion] = useState(false);
-    const [camionEditarIndex, setCamionEditarIndex] = useState(null);
-    const [placaOriginal, setPlacaOriginal] = useState('');
+   
     const [busqueda, setBusqueda] = useState('');
     const [showForm, setShowForm] = useState(false);
     const [nuevoCamion, setNuevoCamion] = useState({

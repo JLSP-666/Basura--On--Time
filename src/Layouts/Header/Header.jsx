@@ -1,4 +1,4 @@
-import { FaUserPlus, FaSignInAlt, FaRegClock, FaHome, FaUser, FaTools, FaSignOutAlt } from "react-icons/fa";
+import { FaUserPlus, FaSignInAlt, FaUser, FaSignOutAlt } from "react-icons/fa";
 import logo from '../../assets/img/icons/logo.png';
 import { ItemNavBar } from '../../UI/ItemNavBar/ItemNavBar';
 import './Header.css';
@@ -33,19 +33,21 @@ export function Header() {
             <>
               <ItemNavBar route='/Register' icon={FaUserPlus} label="Registro" />
               <ItemNavBar route='/InicioS' icon={FaSignInAlt} label="Login" />
-              
             </>
           ) : (
             <>
-              <ItemNavBar route='/' icon={FaHome} label="Inicio" />
-              <ItemNavBar route='/Usuario' icon={FaUser} label="Mi cuenta" />
-              <ItemNavBar route='/PanelDU' icon={FaTools} label="Herramientas" />
+              <ItemNavBar route='/PanelDU' icon={FaUser} label="Mi cuenta" />
               <button
+                id="boton-cierrre"
                 onClick={handleLogout}
-                className="flex items-center gap-2 px-3 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md transition"
+                className="boton-cierre"
               >
-                <FaSignOutAlt />
-                <span>Cerrar sesión</span>
+                <span className="shadow"></span>
+                <span className="edge"></span>
+                <span className="front flex items-center gap-2">
+                  <FaSignOutAlt />
+                  Cerrar sesión
+                </span>
               </button>
             </>
           )}

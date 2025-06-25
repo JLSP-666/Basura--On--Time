@@ -35,6 +35,9 @@ const PanelAdmin = () => {
 
     return (
         <section className='sectFirst'>
+             <div className="absolute top-4 left-4 z-50">
+          <BotonBack route="/" content=" " />
+        </div>
             <div className='min-h-max flex flex-col justify-center items-center w-180 h-screen bg-[var(--Voscuro2)] position fixed left-0'>
                 <img className='ImgLogo' src={logoBasuraOnTime} alt="" />
                 <p className='FontCursive text-5xl text-center text-white'>BASURA ON TIME</p>

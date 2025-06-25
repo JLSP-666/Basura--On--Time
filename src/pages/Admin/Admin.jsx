@@ -65,6 +65,7 @@ const Admin = () => {
   };
 
   return (
+    
     <section className='sectFirst glass p-[50px] place-items-center'>
       <div className='flex flex-col justify-center items-center'>
         <img className='Img-logo' src={logoBasuraOnTime} alt="" />
