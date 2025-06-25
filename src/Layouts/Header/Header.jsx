@@ -37,9 +37,9 @@ export function Header() {
             </>
           ) : (
             <>
-              <ItemNavBar route='/dashboard' icon={FaHome} label="Inicio" />
-              <ItemNavBar route='/perfil' icon={FaUser} label="Mi cuenta" />
-              <ItemNavBar route='/herramientas' icon={FaTools} label="Herramientas" />
+              <ItemNavBar route='/' icon={FaHome} label="Inicio" />
+              <ItemNavBar route='/Usuario' icon={FaUser} label="Mi cuenta" />
+              <ItemNavBar route='/PanelDU' icon={FaTools} label="Herramientas" />
               <button
                 onClick={handleLogout}
                 className="flex items-center gap-2 px-3 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md transition"
