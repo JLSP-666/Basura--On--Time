@@ -63,43 +63,45 @@ const Main = () => {
             </div>
           </div>
         </section>
-        <footer className="bg-white text-white h-2 py-10 px-4 text-center">
-          <div className="max-w-[1000px] mx-auto grid md:grid-cols-5 gap-8">
-            {/* Sección de enlaces */}
-            <div>
-              <h4 className="text-lg text-black font-semibold mb-3">Enlaces</h4>
-              <ul className="space-y-2 text-sm">
-                <li><a href="#" className="hover:underline">Inicio</a></li>
-                <li><a href="#" className="hover:underline">Servicios</a></li>
-                <li><a href="#" className="hover:underline">Contacto</a></li>
-                <li><a href="#" className="hover:underline">Acerca de</a></li>
-              </ul>
-            </div>
+       <footer className="bg-white text-black py-10 px-4">
+  <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
+    
+    {/* Sección de enlaces */}
+    <div>
+      <h4 className="text-lg font-semibold mb-4">Enlaces</h4>
+      <ul className="space-y-2 text-sm">
+        <li><a href="#" className="hover:underline">Inicio</a></li>
+        <li><a href="#" className="hover:underline">Servicios</a></li>
+        <li><a href="#" className="hover:underline">Contacto</a></li>
+        <li><a href="#" className="hover:underline">Acerca de</a></li>
+      </ul>
+    </div>
 
-            {/* Sección de redes sociales */}
-            <div>
-              <h4 className="text-lg text-black font-semibold mb-3">Síguenos</h4>
-              <div className="flex justify-center gap-4 text-xl">
-                <a href="#" aria-label="Facebook" className="hover:text-emerald-400">🌐</a>
-                <a href="#" aria-label="Twitter" className="hover:text-emerald-400">🐦</a>
-                <a href="#" aria-label="Instagram" className="hover:text-emerald-400">📸</a>
-              </div>
-            </div>
+    {/* Sección de redes sociales */}
+    <div>
+      <h4 className="text-lg font-semibold mb-4">Síguenos</h4>
+      <div className="flex justify-center gap-6 text-2xl">
+        <a href="#" aria-label="Facebook" className="hover:text-emerald-500">🌐</a>
+        <a href="#" aria-label="Twitter" className="hover:text-emerald-500">🐦</a>
+        <a href="#" aria-label="Instagram" className="hover:text-emerald-500">📸</a>
+      </div>
+    </div>
 
-            {/* Sección de contacto o dirección */}
-            <div>
-              <h4 className="text-lg text-black font-semibold mb-3">Contacto</h4>
-              <p className="text-sm">info@basuraontime.com</p>
-              <p className="text-sm">+123 456 7890</p>
-              <p className="text-sm">Ciudad Verde, Eco País</p>
-            </div>
-          </div>
+    {/* Sección de contacto */}
+    <div>
+      <h4 className="text-lg font-semibold mb-4">Contacto</h4>
+      <p className="text-sm">info@basuraontime.com</p>
+      <p className="text-sm">+123 456 7890</p>
+      <p className="text-sm">Ciudad Verde, Eco País</p>
+    </div>
+  </div>
 
-          {/* Línea final */}
-          <div className="mt-10 text-xs text-gray-400">
-            © {new Date().getFullYear()} Basura On Time. Todos los derechos reservados.
-          </div>
-        </footer>
+  {/* Línea inferior */}
+  <div className="mt-10 text-xs text-gray-500 text-center">
+    © {new Date().getFullYear()} Basura On Time. Todos los derechos reservados.
+  </div>
+</footer>
+
 
 
 
