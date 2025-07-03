@@ -19,9 +19,9 @@ export default function LoginConductor() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#002015] relative">
-      <div className="absolute top-4 left-4">
-        <BotonBack text="Volver" />
-      </div>
+       <div className="absolute top-4 left-4 z-50">
+          <BotonBack route="/" content=" " />
+        </div>
 
       <div className="flex flex-col md:flex-row items-center justify-center gap-16 px-4">
         {/* Logo y título */}

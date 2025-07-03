@@ -37,9 +37,9 @@ export default function RegistroConductor() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#002015] relative">
       {/* Botón volver */}
-      <div className="absolute top-4 left-4">
-        <BotonBack text="Volver" />
-      </div>
+        <div className="absolute top-4 left-4 z-50">
+          <BotonBack route="/" content=" " />
+        </div>
 
       {/* Contenedor principal */}
       <div className="flex flex-col md:flex-row items-center justify-center gap-16 px-4">
