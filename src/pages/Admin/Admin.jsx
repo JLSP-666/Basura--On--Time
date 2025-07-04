@@ -9,6 +9,8 @@ import "./Admin.css";
 const Admin = () => {
   const URL = "https://express-latest-6gmf.onrender.com/authAdmin";
   const navigate = useNavigate();
+  const [user, setUser] = useState('');
+
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
