@@ -1,25 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import logoBasuraOnTime from '../../assets/img/icons/logoBasuraOnTime.png';
 import './Rutas.css';
+import {BotonBack } from '../../UI/BotonBack/BotonBack';
 import Swal from 'sweetalert2';
-import { ItemNavBar } from '../../UI/ItemNavBar/ItemNavBar'; // Asegúrate de tener esta ruta correcta
 
 const Rutas = () => {
   const [pdfUrl, setPdfUrl] = useState(null);
 
   useEffect(() => {
     const savedPdf = localStorage.getItem('pdfHorarioBOT');
-    if (savedPdf) setPdfUrl(savedPdf);
+    if (savedPdf) {
+      setPdfUrl(savedPdf);
+    }
   }, []);
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
+
     if (file && file.type === 'application/pdf') {
       const reader = new FileReader();
       reader.onload = () => {
         const base64Pdf = reader.result;
         setPdfUrl(base64Pdf);
         localStorage.setItem('pdfHorarioBOT', base64Pdf);
+
         Swal.fire({
           icon: 'success',
           title: '¡PDF importado!',
@@ -65,53 +69,51 @@ const Rutas = () => {
   };
 
   return (
-    <section className='sectFirst flex'>
-      {/* Panel lateral izquierdo */}
-      <div className='min-h-screen w-72 flex flex-col justify-center items-center bg-[var(--Voscuro2)] fixed left-0 top-0 z-10'>
-        <div className="absolute top-4 left-4">
-          <ItemNavBar route="/PanelAdmin" content=" " />
-        </div>
-        <img className='ImgLogo' src={logoBasuraOnTime} alt="Logo" />
-        <p className='FontCursive text-4xl text-white text-center mt-4'>BASURA ON TIME</p>
-      </div>
-
-      {/* Contenido principal */}
-      <div className="flex-1 ml-72 p-8 pt-24 w-full min-h-screen overflow-y-auto FontGeologica">
-        <h1 className="text-3xl md:text-5xl text-white mb-6 text-center">Documentos de recolección BOT</h1>
-
-        <button
-          onClick={() => document.getElementById("pdfInput").click()}
-          className="group cursor-pointer flex justify-center items-center text-white bg-[var(--Voscuro2)] rounded-2xl px-6 py-2 text-xl transition-all hover:scale-105 hover:shadow-2xl active:scale-95 mb-8 mx-auto"
-        >
-          Importar PDF
-        </button>
-
-        <input
-          type="file"
-          id="pdfInput"
-          accept="application/pdf"
-          style={{ display: "none" }}
-          onChange={handleFileChange}
-        />
-
-        {pdfUrl ? (
-          <div className="flex flex-col items-center w-full max-w-[800px] mx-auto">
-            <div className="w-full h-auto rounded-xl shadow-lg overflow-hidden">
-              <embed src={pdfUrl} type="application/pdf" width="100%" height="500px" className="rounded-xl" />
-            </div>
-            <p className="text-white mt-5 text-center">Horario de recolección en las áreas públicas</p>
-            <button
-              onClick={handleDeletePdf}
-              className="group cursor-pointer mt-4 text-white bg-red-600 px-6 py-2 rounded-xl text-lg hover:bg-red-700 transition-all hover:scale-105 hover:shadow-2xl active:scale-95"
-            >
-              Eliminar PDF
-            </button>
+    <>
+      <section className='sectFirst'>
+        <div className='min-h-max flex flex-col justify-center items-center w-180 h-screen bg-[var(--Voscuro2)] fixed left-0'>
+          <div className="absolute top-4 left-4 z-50">
+            <BotonBack route="/PanelAdmin" content=" " />
           </div>
-        ) : (
-          <p className="text-white text-lg mt-6 text-center">No hay documentos cargados.</p>
-        )}
-      </div>
-    </section>
+          <img className='ImgLogo' src={logoBasuraOnTime} alt="Logo" />
+          <p className='FontCursive text-5xl text-center text-white'>BASURA ON TIME</p>
+        </div>
+
+        <div className='DivPanelAdmin FontGeologica'>
+          <button
+            onClick={() => document.getElementById("pdfInput").click()}
+            className='group cursor-pointer flex flex-col justify-center items-center text-white bg-[var(--Voscuro2)] 
+                       rounded-2xl w-80 h-30 text-3xl gap-3
+                       transition-all duration-300 ease-in-out
+                       hover:scale-105 hover:shadow-2xl hover:bg-opacity-90 active:scale-95'>
+            Importar
+          </button>
+
+          <input
+            type="file"
+            id="pdfInput"
+            accept="application/pdf"
+            style={{ display: "none" }}
+            onChange={handleFileChange}
+          />
+
+          <p className='text-5xl text-white m-7'>Documentos recolección BOT</p>
+
+          {pdfUrl && (
+            <div className="flex flex-col items-center">
+              <embed src={pdfUrl} type="application/pdf" width="700" height="500" className="rounded-xl shadow-lg" />
+              <p className='text-white m-5'>Horario de recolección en las áreas públicas</p>
+              <button
+                onClick={handleDeletePdf}
+                className="mt-4 text-white bg-red-600 px-6 py-2 rounded-xl text-lg hover:bg-red-700 transition-all"
+              >
+                Eliminar PDF
+              </button>
+            </div>
+          )}
+        </div>
+      </section>
+    </>
   );
 };
 

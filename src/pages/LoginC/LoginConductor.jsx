@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { BotonBack } from '../../UI/BotonBack/BotonBack';
+import { BotonBack } from '../../UI/BotonBack/BotonBack'; // Asegúrate que exista este componente
 import logoBasuraOnTime from '../../assets/img/icons/logoBasuraOnTime.png';
 
 export default function LoginConductor() {
@@ -9,38 +8,26 @@ export default function LoginConductor() {
     contraseña: ''
   });
 
-  const navigate = useNavigate();
-
   const handleChange = (e) => {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Simulación de login exitoso
     console.log('Intentando iniciar sesión con:', loginData);
-
-    // Aquí pondrías tu lógica real con axios y backend
-    // Por ahora, guardamos token simulado y rol
-    localStorage.setItem('token', 'TOKEN_EJEMPLO');
-    localStorage.setItem('rol', 'conductor');
-
-    // Redirige al panel del conductor
-    navigate('/PanelC');
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#002015] relative">
-      <div className="absolute top-4 left-4 z-50">
-        <BotonBack route="/" content=" " />
-      </div>
+       <div className="absolute top-4 left-4 z-50">
+          <BotonBack route="/" content=" " />
+        </div>
 
       <div className="flex flex-col md:flex-row items-center justify-center gap-16 px-4">
         {/* Logo y título */}
         <div className="text-center">
-          <img className="img_logo" src={logoBasuraOnTime} alt="Logo" />
-          <p id="FontCursive" className="text-6xl text-center text-white">Basura On Time</p>
+          <img className='img_logo' src={logoBasuraOnTime} alt="Logo" />
+                 <p id='FontCursive' className='text-6xl text-center text-white'>Basura On Time</p>
         </div>
 
         {/* Formulario */}

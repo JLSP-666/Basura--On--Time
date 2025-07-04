@@ -4,8 +4,6 @@ import AppleLoginButton from '../components/AppleLoginButton';
 import Divider from '../components/Divider';
 import CreateAccountForm from '../components/CreateAccountForm';
 import Footer from '../components/Footer';
-import ItemNavBar from '../../UI/ItemNavBar/ItemNavBar';
-
 
 const XLanding = () => {
   return (

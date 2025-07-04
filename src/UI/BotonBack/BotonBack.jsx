@@ -1,7 +1,7 @@
 // src/UI/BotonBack/BotonBack.jsx
 
 import { NavLink } from "react-router-dom";
-import { MdArrowBackIosNew } from "react-icons/md"; // Ícono de volver moderno
+import { MdArrowBackIosNew } from "react-icons/md"; // Ícono de retroceso
 
 export const BotonBack = ({ route }) => {
   return (

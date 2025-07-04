@@ -9,8 +9,6 @@ import "./Admin.css";
 const Admin = () => {
   const URL = "https://express-latest-6gmf.onrender.com/authAdmin";
   const navigate = useNavigate();
-  const [user, setUser] = useState('');
-
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -22,17 +20,18 @@ const Admin = () => {
       text: 'Estamos procesando tu solicitud',
       allowEscapeKey: false,
       allowOutsideClick: false,
-      timer: 1500,
       timerProgressBar: true,
       didOpen: () => {
         Swal.showLoading();
       }
     });
-    const response = await axios.post(URL, { email, password });
-    const token = response.data.token; 
 
-    setTimeout(() => {
+    try {
+      const response = await axios.post(URL, { email, password });
+      const token = response.data.token;
+
       if (token) {
+        localStorage.setItem('token', token);
         Swal.fire({
           title: 'Bienvenido',
           text: 'Has iniciado sesión correctamente',
@@ -40,26 +39,36 @@ const Admin = () => {
           showConfirmButton: false,
           allowEscapeKey: false,
           allowOutsideClick: false,
-          timer: 1500,
+          timer: 2000,
           timerProgressBar: true,
         }).then((result) => {
           if (result.isConfirmed || result.dismiss === Swal.DismissReason.timer) {
-            localStorage.setItem('token', token);
             navigate('/PanelAdmin');
             setEmail('');
             setPassword('');
           }
         });
       } else {
-        Swal.fire({
-          title: 'Error',
-          text: 'Usuario o contraseña incorrectos',
-          icon: 'error',
-          confirmButtonText: 'Intentar de nuevo',
-          confirmButtonColor: '#0A372D',
-        });
+        throw new Error("Token vacío");
       }
-    }, 1500);
+    } catch (error) {
+      console.error("Error al iniciar sesión:", error);
+
+      let message = "Ha ocurrido un error inesperado";
+      if (error.response?.status === 401) {
+        message = "Usuario o contraseña incorrectos";
+      } else if (error.message === 'Network Error' || error.code === 'ERR_NETWORK') {
+        message = "Problema de red. Verifica tu conexión a Internet.";
+      }
+
+      Swal.fire({
+        title: 'Error',
+        text: message,
+        icon: 'error',
+        confirmButtonText: 'Intentar de nuevo',
+        confirmButtonColor: '#0A372D',
+      });
+    }
   };
 
   const toggleShowPassword = () => {
@@ -67,28 +76,23 @@ const Admin = () => {
   };
 
   return (
-    <section className='sectFirst glass min-h-screen flex flex-col md:flex-row justify-center items-center p-4 md:gap-20'>
-
-      {/* Logo y texto */}
-      <div className='flex flex-col justify-center items-center mb-6 md:mb-0'>
-        <img className='w-24 h-24 mb-4 md:w-[200px] md:h-[200px]' src={logoBasuraOnTime} alt="Logo" />
-        <p className='FontCursive text-4xl text-center text-white md:text-6xl'>BASURA ON TIME</p>
+    <section className='sectFirst glass p-[50px] place-items-center'>
+      <div className='flex flex-col justify-center items-center'>
+        <img className='Img-logo' src={logoBasuraOnTime} alt="" />
+        <p className='FontCursive text-6xl text-center text-white'>BASURA ON TIME</p>
       </div>
-
-      {/* Formulario con ancho controlado en PC */}
-      <div className='FontGeologica flex flex-col justify-center items-center gap-4 bg-[var(--Voscuro2)] w-full sm:max-w-[400px] p-6 rounded-3xl md:w-[480px] md:min-h-[450px] md:gap-4 md:rounded-4xl md:p-8 md:max-w-none'>
-
-        <p className='FontCursive text-3xl p-4 text-white text-center md:text-5xl md:p-7'>Administrador</p>
+      <div className='FontGeologica flex flex-col justify-center items-center gap-3.5 bg-[var(--Voscuro2)] w-120 h-100 rounded-4xl'>
+        <p className='FontCursive text-5xl p-7 text-white'>Administrador</p>
 
         <input
           type="text"
-          placeholder='Usuario'
-          value={user}
-          onChange={(e) => setUser(e.target.value)}
-          className='rounded-md bg-[var(--Vclaro2)] w-full max-w-[500px] h-10 text-center placeholder:text-center text-white'
+          placeholder='Correo'
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className='rounded-md bg-[var(--Vclaro2)] w-100 h-10 text-center placeholder:text-center text-white'
         />
 
-        <div className="relative w-full max-w-[500px]">
+        <div className="relative w-100">
           <input
             type={showPassword ? "text" : "password"}
             placeholder='Contraseña'
@@ -100,6 +104,7 @@ const Admin = () => {
             onClick={toggleShowPassword}
             type="button"
             className="absolute inset-y-0 right-2 flex items-center text-gray-400 hover:text-white"
+            aria-label={showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}
           >
             {showPassword ? (
               <EyeSlashIcon className="h-5 w-5" />
@@ -110,14 +115,13 @@ const Admin = () => {
         </div>
 
         <button
-          className='rounded-md w-full max-w-[500px] h-10 bg-[var(--Vclaro)] text-white group cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:bg-opacity-90 active:scale-95'
+          className='rounded-md w-100 h-10 bg-[var(--Vclaro)] text-white group cursor-pointer transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:bg-opacity-90 active:scale-95'
           onClick={handleLogin}
         >
           Iniciar sesión
         </button>
       </div>
     </section>
-
   );
 };
 
