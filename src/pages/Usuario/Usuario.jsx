@@ -5,15 +5,17 @@ import { Pencil, Trash2, MapPin, Mail, User, Phone, Lock } from 'lucide-react';
 import Swal from 'sweetalert2';
 import logoBasuraOnTime from '../../assets/img/icons/logoBasuraOnTime.png';
 import Perfil from '../../assets/img/icons/perfil.jpg';
+import { useNavigate } from 'react-router-dom';
 import './Usuario.css';
 
 const UserProfileApp = () => {
   const URL = 'http://localhost:10101/profile';
   const token = localStorage.getItem('token');
+  const navigate = useNavigate();
+
   const [direccion, setDireccion] = useState('Calle Falsa 123, Ciudad');
   const [showModal, setShowModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
-
   const [email, setEmail] = useState('');
   const [nombre, setNombre] = useState('');
   const [apellido, setApellido] = useState('');
@@ -21,36 +23,39 @@ const UserProfileApp = () => {
   const [passwordConfirm, setPasswordConfirm] = useState('');
 
   useEffect(() => {
-    if (token) {
-      axios.get(URL, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-        .then(response => {
-          const { email, nombre, apellido, telefono, direccion } = response.data;
-          setEmail(email);
-          setNombre(nombre);
-          setApellido(apellido);
-          setTelefono(telefono);
-          setDireccion(direccion);
-        })
-        .catch(error => console.error('Error al obtener los datos del usuario:', error));
-    } else {
+    if (!token) {
       Swal.fire({
         icon: 'error',
-        title: 'No estás autenticado',
-        text: 'Por favor, inicia sesión.',
+        title: 'Acceso denegado',
+        text: 'Por favor, inicia sesión primero.',
         timer: 2000,
         showConfirmButton: false,
+        didClose: () => navigate('/InicioS')
       });
+      return;
     }
-  }, [token]);
+
+    // Obtener datos del perfil
+    axios.get(URL, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then(res => {
+        const { email, nombre, apellido, telefono, direccion } = res.data;
+        setEmail(email);
+        setNombre(nombre);
+        setApellido(apellido);
+        setTelefono(telefono);
+        if (direccion) setDireccion(direccion);
+      })
+      .catch(err => {
+        console.error('Error al obtener datos del perfil:', err);
+      });
+  }, [token, navigate]);
 
   const handleEliminarCuenta = () => {
     if (passwordConfirm.trim() === '') {
       Swal.fire({
-        icon: 'warning',
+        icon: 'error',
         title: 'Debes introducir tu contraseña',
         timer: 2000,
         showConfirmButton: false,
@@ -59,6 +64,8 @@ const UserProfileApp = () => {
     }
 
     // Aquí enviarías una solicitud DELETE real al backend
+    // axios.delete(`${URL}/delete`, { headers: { Authorization: `Bearer ${token}` }, data: { password: passwordConfirm } })
+
     setShowModal(false);
     setPasswordConfirm('');
 
@@ -72,14 +79,34 @@ const UserProfileApp = () => {
 
   const handleGuardarCambios = () => {
     // Aquí enviarías una solicitud PUT/PATCH real al backend
-    setShowEditModal(false);
+    const updatedData = {
+      email,
+      nombre,
+      apellido,
+      telefono: Telefono,
+      direccion
+    };
 
-    Swal.fire({
-      icon: 'success',
-      title: 'Información actualizada',
-      timer: 2000,
-      showConfirmButton: false,
-    });
+    axios.put(URL, updatedData, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then(() => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Información actualizada',
+          timer: 2000,
+          showConfirmButton: false,
+        });
+        setShowEditModal(false);
+      })
+      .catch(error => {
+        console.error('Error al actualizar información:', error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error al actualizar',
+          text: 'Inténtalo más tarde',
+        });
+      });
   };
 
   return (
@@ -174,7 +201,7 @@ const UserProfileApp = () => {
                   setShowModal(false);
                   setPasswordConfirm('');
                   Swal.fire({
-                    icon: 'info',
+                    icon: 'error',
                     title: 'Operación cancelada',
                     timer: 1500,
                     showConfirmButton: false,
@@ -188,8 +215,8 @@ const UserProfileApp = () => {
                 onClick={handleEliminarCuenta}
                 disabled={!passwordConfirm.trim()}
                 className={`rounded-md w-full max-w-[120px] h-10 text-white font-semibold transition-all duration-300 ${passwordConfirm.trim()
-                    ? 'bg-[var(--Rojo)] hover:scale-105 hover:shadow-lg'
-                    : 'bg-[var(--Rojo)] opacity-60 cursor-not-allowed'
+                  ? 'bg-[var(--Rojo)] hover:scale-105 hover:shadow-lg'
+                  : 'bg-[var(--Rojo)] opacity-60 cursor-not-allowed'
                   }`}
               >
                 Confirmar
@@ -250,7 +277,7 @@ const UserProfileApp = () => {
                 onClick={() => {
                   setShowEditModal(false);
                   Swal.fire({
-                    icon: 'info',
+                    icon: 'error',
                     title: 'Edición cancelada',
                     timer: 1500,
                     showConfirmButton: false,

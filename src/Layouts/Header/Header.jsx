@@ -1,12 +1,14 @@
-import { FaUserPlus, FaSignInAlt, FaUser, FaSignOutAlt } from "react-icons/fa";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { FaUserPlus, FaSignInAlt, FaUser, FaSignOutAlt, FaBars, FaTimes, FaRegClock } from 'react-icons/fa';
 import logo from '../../assets/img/icons/logo.png';
 import { ItemNavBar } from '../../UI/ItemNavBar/ItemNavBar';
 import './Header.css';
-import { useNavigate } from 'react-router-dom';
 
 export function Header() {
   const navigate = useNavigate();
   const isLoggedIn = !!localStorage.getItem('token');
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -28,19 +30,18 @@ export function Header() {
         </div>
 
         {/* Botones de navegación dependiendo del estado de sesión */}
-        <div className="flex justify-end gap-4 pr-4 me-15">
+        <div className="hidden md:flex justify-end gap-4 pr-4 me-15">
           {!isLoggedIn ? (
             <>
-              <ItemNavBar route='/Register' icon={FaUserPlus} label="Registro" />
-              <ItemNavBar route='/InicioS' icon={FaSignInAlt} label="Login" />
+              <ItemNavBar route="/Register" icon={FaUserPlus} label="Registro" />
+              <ItemNavBar route="/InicioS" icon={FaSignInAlt} label="Login" />
             </>
           ) : (
             <>
-              <ItemNavBar route='/PanelDU' icon={FaUser} label="Mi cuenta" />
+              <ItemNavBar route="/PanelDU" icon={FaUser} label="Mi cuenta" />
               <button
-                id="boton-cierrre"
+                id="boton-cierre"
                 onClick={handleLogout}
-                className="boton-cierre"
               >
                 <span className="shadow"></span>
                 <span className="edge"></span>
@@ -52,7 +53,42 @@ export function Header() {
             </>
           )}
         </div>
+
+        {/* Icono hamburguesa en móviles */}
+        <div className="md:hidden flex justify-end pr-8">
+          <button onClick={() => setMenuOpen(!menuOpen)}>
+            {menuOpen ? <FaTimes size={28} /> : <FaBars size={28} />}
+          </button>
+        </div>
       </div>
+
+      {/* Menú desplegable en móviles */}
+      {menuOpen && (
+        <div
+          className="md:hidden fixed top-[160px] left-0 right-0 bg-[var(--Voscuro2)] text-white px-6 py-4 shadow-md z-50 FontGeologica"
+          onMouseLeave={() => setMenuOpen(false)}
+        >
+          {!isLoggedIn ? (
+            <>
+              <ItemNavBar route="/Register" icon={FaUserPlus} label="Registro" />
+              <ItemNavBar route="/InicioS" icon={FaSignInAlt} label="Login" />
+              <ItemNavBar route="/RutasU" icon={FaRegClock} label="Horario de recolección" />
+            </>
+          ) : (
+            <>
+              <ItemNavBar route="/PanelDU" icon={FaUser} label="Mi cuenta" />
+              <button
+                id="boton-cierre-mobile"
+                onClick={handleLogout}
+                className="mt-4 w-full flex items-center gap-2"
+              >
+                <FaSignOutAlt />
+                Cerrar sesión
+              </button>
+            </>
+          )}
+        </div>
+      )}
     </header>
   );
 }
